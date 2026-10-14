@@ -110,6 +110,12 @@ Browser pengunjung
 
 Jadwal sholat dan tanggal Hijriah diambil dari layanan data yang sama dengan widget KHGT di situs [muhammadiyah.or.id](https://muhammadiyah.or.id), yaitu `https://khgt-api-dev.matadigital.workers.dev/api/sholat`. Alamat ini disimpan pada nilai `apiBase` di `khgt-jadwal-sholat.php` dan dapat diganti bila diperlukan.
 
+### Privasi
+
+- Widget meminta izin lokasi saat halaman dibuka. Bila pengunjung mengizinkan, koordinat perangkat dikirim ke layanan data jadwal dan ke Nominatim (OpenStreetMap) untuk mencari nama tempat.
+- Bila izin ditolak atau pengunjung mencari nama kota, yang dikirim adalah nama kota yang diketik dan titik koordinat kota tersebut.
+- Plugin tidak menyimpan data pengunjung di server situs Anda. Hasil pencarian kota hanya disimpan sementara di `sessionStorage` browser pengunjung.
+
 ## Keterbatasan yang diketahui
 
 - Sorotan "waktu sholat berikutnya" memakai jam perangkat pengunjung; setelah Isya tidak ada baris yang disorot.
@@ -137,6 +143,11 @@ git archive --prefix=khgt-jadwal-sholat/ -o khgt-jadwal-sholat.zip HEAD
 ```
 
 `.gitattributes` mengecualikan `docs/`, `README.md`, dan berkas pendukung git dari ZIP, sehingga hasilnya hanya berisi plugin.
+
+## Riwayat versi
+
+- **1.0.1**: perbaikan keamanan (daftar waktu dirender sebagai teks), catatan privasi.
+- **1.0.0**: rilis pertama.
 
 ## Berkontribusi
 

@@ -3,7 +3,7 @@
  * Plugin Name: Jadwal Sholat KHGT Muhammadiyah
  * Plugin URI:  https://github.com/trenggalekmu/khgt-jadwal-sholat
  * Description: Widget dan shortcode jadwal sholat harian beserta tanggal Hijriah (KHGT), dengan pencarian kota dan deteksi lokasi GPS.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Requires at least: 5.0
  * Requires PHP: 7.4
  * Author:      mastrigus (MPID PDM Trenggalek)
@@ -40,7 +40,7 @@ class KHGT_Prayer_Widget extends WP_Widget {
         $default_city = !empty($instance['default_city']) ? $instance['default_city'] : 'Yogyakarta';
         ?>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('default_city')); ?>"><?php _e('Kota Default:'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('default_city')); ?>"><?php esc_html_e('Kota Default:', 'khgt-jadwal-sholat'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('default_city')); ?>" name="<?php echo esc_attr($this->get_field_name('default_city')); ?>" type="text" value="<?php echo esc_attr($default_city); ?>">
         </p>
         <?php
@@ -55,8 +55,8 @@ class KHGT_Prayer_Widget extends WP_Widget {
 
 // Register assets
 function khgt_enqueue_scripts() {
-    wp_register_style('khgt-style', KHGT_PLUGIN_DIR . 'assets/css/khgt-widget.css', [], '1.0.0');
-    wp_register_script('khgt-script', KHGT_PLUGIN_DIR . 'assets/js/khgt-widget.js', [], '1.0.0.' . filemtime(__DIR__ . '/assets/js/khgt-widget.js'), true);
+    wp_register_style('khgt-style', KHGT_PLUGIN_DIR . 'assets/css/khgt-widget.css', [], '1.0.1');
+    wp_register_script('khgt-script', KHGT_PLUGIN_DIR . 'assets/js/khgt-widget.js', [], '1.0.1.' . filemtime(__DIR__ . '/assets/js/khgt-widget.js'), true);
 
     wp_localize_script('khgt-script', 'khgtConfig', [
         'apiBase' => 'https://khgt-api-dev.matadigital.workers.dev/api/sholat',

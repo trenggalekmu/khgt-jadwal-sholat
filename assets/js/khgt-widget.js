@@ -141,25 +141,31 @@
             for (const k in schedule) normalized[k.toLowerCase()] = schedule[k];
 
             const order = ['subuh', 'terbit', 'dzuhur', 'ashar', 'maghrib', 'isya'];
-            let html = '';
             const curMin = now.getHours() * 60 + now.getMinutes();
             let nextFound = false;
+            const frag = document.createDocumentFragment();
 
             order.forEach(key => {
-                const val = normalized[key] || '-';
-                let active = '';
+                const val = String(normalized[key] || '-');
+                let active = false;
                 if (val !== '-' && val.includes(':')) {
                     const [h, m] = val.split(':');
                     const schedMin = parseInt(h, 10) * 60 + parseInt(m, 10);
                     if (!nextFound && schedMin > curMin && key !== 'terbit') {
-                        active = 'active';
+                        active = true;
                         nextFound = true;
                     }
                 }
-                const label = key.charAt(0).toUpperCase() + key.slice(1);
-                html += `<li class="nm-ws-item ${active}"><span>${label}</span><strong>${val}</strong></li>`;
+                const li = document.createElement('li');
+                li.className = 'nm-ws-item' + (active ? ' active' : '');
+                const label = document.createElement('span');
+                label.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+                const time = document.createElement('strong');
+                time.textContent = val;
+                li.append(label, time);
+                frag.appendChild(li);
             });
-            elList.innerHTML = html;
+            elList.replaceChildren(frag);
         }
 
         btnSearch.addEventListener('click', () => {
