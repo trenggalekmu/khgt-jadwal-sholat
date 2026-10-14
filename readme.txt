@@ -12,7 +12,7 @@ Widget dan shortcode jadwal sholat harian beserta tanggal Hijriah (KHGT), dengan
 == Description ==
 Plugin ini menampilkan jadwal sholat harian (Subuh, Terbit, Dzuhur, Ashar, Maghrib, Isya) dan tanggal Hijriah dalam bentuk widget atau shortcode. Pengunjung bisa mencari kota atau memakai deteksi lokasi (GPS) peramban.
 
-Data jadwal diambil dari layanan API pihak ketiga (Muhammadiyah Digital Falak, endpoint `khgt-api-dev.matadigital.workers.dev`) langsung dari peramban pengunjung. Lihat README di GitHub untuk detail dan keterbatasannya.
+Data jadwal diambil dari layanan data yang sama dengan widget KHGT di muhammadiyah.or.id, langsung dari peramban pengunjung. Lihat README di GitHub untuk detail.
 
 Dibuat oleh mastrigus (MPID PDM Trenggalek). Open source.
 
